@@ -17,7 +17,7 @@ if not exist %CD%\extra mkdir %CD%\extra
 if not exist %CD%\data\appdata mkdir %CD%\data\appdata
 
 :VERSION
-echo 1 > %CD%\doc\version.txt
+echo 2 > %CD%\doc\version.txt
 set /p current_version=<%CD%\doc\version.txt
 
 :CREDITS
@@ -143,7 +143,7 @@ echo 1. reinstall steam [not a feature yet]
 echo 2. launch steam
 echo 3. ????
 echo 4. uninstall steam [not a feature yet]
-echo 5. update program [not a feature yet]
+echo 5. update program
 echo 6. about
 echo 7. exit
 set /p choice="enter a number and press enter to confirm: "
