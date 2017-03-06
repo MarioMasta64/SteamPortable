@@ -17,7 +17,7 @@ if not exist %CD%\extra mkdir %CD%\extra
 if not exist %CD%\data\appdata mkdir %CD%\data\appdata
 
 :VERSION
-echo 2 > %CD%\doc\version.txt
+echo 3 > %CD%\doc\version.txt
 set /p current_version=<%CD%\doc\version.txt
 
 :CREDITS
@@ -47,7 +47,7 @@ if not exist %CD%\extra\SteamSetup.exe goto DOWNLOADSTEAM
 if not exist %CD%\bin\7-ZipPortable\7-ZipPortable.exe goto 7ZIPINSTALLERCHECK
 start %CD%\bin\7-ZipPortable\7-ZipPortable.exe %CD%\extra\SteamSetup.exe
 title READMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADME
-echo EXTRACT "Steam.exe" TO %CD%\bin\Steam\Steam.exe AND PRESS ENTER TO CONTINUE
+echo EXTRACT "Steam.exe" TO %CD%\bin\Steam AND PRESS ENTER TO CONTINUE
 pause
 goto STEAMCHECK
 
