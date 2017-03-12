@@ -17,7 +17,7 @@ if not exist %CD%\extra mkdir %CD%\extra
 if not exist %CD%\data\appdata mkdir %CD%\data\appdata
 
 :VERSION
-echo 3 > %CD%\doc\version.txt
+echo 4 > %CD%\doc\version.txt
 set /p current_version=<%CD%\doc\version.txt
 
 :CREDITS
@@ -25,7 +25,8 @@ cls
 if exist %CD%\doc\license.txt goto STEAMCHECK
 echo ================================================== > %CD%\doc\license.txt
 echo =              Script by MarioMasta64            = >> %CD%\doc\license.txt
-echo =            Script Version: v%current_version%-beta           = >> %CD%\doc\license.txt
+:: REMOVE SPACE AFTER VERSION HITS DOUBLE DIGITS
+echo =            Script Version: v%current_version%-beta            = >> %CD%\doc\license.txt
 echo ================================================== >> %CD%\doc\license.txt
 echo =You may Modify this WITH consent of the original= >> %CD%\doc\license.txt
 echo = creator, as long as you include a copy of this = >> %CD%\doc\license.txt
@@ -38,7 +39,6 @@ start notepad.exe %CD%\doc\license.txt
 
 :STEAMCHECK
 cls
-:: doesnt work for now.
 if not exist %CD%\bin\Steam\Steam.exe goto FILECHECK
 goto WGETUPDATE
 
@@ -47,7 +47,7 @@ if not exist %CD%\extra\SteamSetup.exe goto DOWNLOADSTEAM
 if not exist %CD%\bin\7-ZipPortable\7-ZipPortable.exe goto 7ZIPINSTALLERCHECK
 start %CD%\bin\7-ZipPortable\7-ZipPortable.exe %CD%\extra\SteamSetup.exe
 title READMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADME
-echo EXTRACT "Steam.exe" TO %CD%\bin\Steam AND PRESS ENTER TO CONTINUE
+echo EXTRACT "Steam.exe" TO %CD%\bin\Steam\Steam.exe AND PRESS ENTER TO CONTINUE
 pause
 goto STEAMCHECK
 
@@ -141,11 +141,23 @@ echo %NAG%
 set nag=SELECTION TIME!
 echo 1. reinstall steam [not a feature yet]
 echo 2. launch steam
-echo 3. ????
-echo 4. uninstall steam [not a feature yet]
+echo 3. reset steam
+echo 4. uninstall steam
 echo 5. update program
 echo 6. about
 echo 7. exit
+echo.
+echo Hey. Thanks for using my project. I was wondering
+echo if you would like an option to copy over steam
+echo and/or saves from the system to the portable
+echo install here. feel free to leave me your answer:
+echo loveme0198@gmail.com or on the github:
+echo https://github.com/MarioMasta64/SteamPortable
+echo Thank You All For Your Kind Response To This! :D
+echo.
+echo Feel Free To Check Out My Other Projects:
+echo https://github.com/MarioMasta64/MinecraftPortable
+echo.
 set /p choice="enter a number and press enter to confirm: "
 if %choice%==1 goto NEW
 if %choice%==2 goto DEFAULT
@@ -178,10 +190,47 @@ echo STEAM IS RUNNING
 goto EXIT
 
 :SELECT
-goto NULL
+cls
+title PORTABLE STEAM LAUNCHER - RESET STEAM
+echo %NAG%
+set nag=SELECTION TIME!
+echo type "yes" to reset steam
+echo or anything else to cancel
+set /p choice="are you sure: "
+if %choice%==yes goto NOWRESETTING
+goto MENU
+
+:NOWRESETTING
+xcopy /q %CD%\bin\Steam\steam.exe %CD%\extra\ /e /i /y
+call :NOWDELETING 1
+xcopy /q %CD%\extra\steam.exe %CD%\bin\Steam\ /e /i /y
+goto DEFAULT
 
 :DELETE
-goto NULL
+cls
+title PORTABLE STEAM LAUNCHER - UNINSTALL STEAM
+echo %NAG%
+set nag=SELECTION TIME!
+echo type "yes" to uninstall steam
+echo or anything else to cancel
+set /p choice="are you sure: "
+if %choice%==yes call :NOWDELETING 0
+goto MENU
+
+:NOWDELETING
+set choice=%1
+if %choice%==1 title PORTABLE STEAM LAUNCHER - RESETTING STEAM
+if %choice%==0 title PORTABLE STEAM LAUNCHER - UNINSTALLING STEAM
+cls
+echo %NAG%ING
+rmdir /s /q %CD%\bin\Steam
+cls
+if %choice%==1 title PORTABLE STEAM INSTALLER - RESET
+if %choice%==0 title PORTABLE STEAM INSTALLER - UNINSTALLED
+if %choice%==1 echo STEAM HAS BEEN RESET
+if %choice%==0 echo STEAM HAS BEEN UNINSTALLED
+pause
+exit /b
 
 :UPDATECHECK
 cls
