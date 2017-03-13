@@ -1,4 +1,5 @@
 @echo off
+:: add "" around things needed for paths dummy (later...)
 Color 0A
 title PORTABLE STEAM LAUNCHER
 set nag=BE SURE TO TURN CAPS LOCK OFF! (never said it was on just make sure)
@@ -18,7 +19,7 @@ if not exist %CD%\extra mkdir %CD%\extra
 if not exist %CD%\data\appdata mkdir %CD%\data\appdata
 
 :VERSION
-echo 6 > %CD%\doc\version.txt
+echo 7 > %CD%\doc\version.txt
 set /p current_version=<%CD%\doc\version.txt
 
 :CREDITS
@@ -61,10 +62,10 @@ goto FILECHECK
 
 :7ZIPINSTALLERCHECK
 if not exist %CD%\extra\7-ZipPortable_16.04.paf.exe  goto DOWNLOAD7ZIP
-start %CD%\extra\7-ZipPortable_16.04.paf.exe
+start %CD%\extra\7-ZipPortable_16.04.paf.exe /destination=%CD%\bin\
 :: maybe a different approach of bringing this to the front
 title READMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADME
-echo INSTALL 7ZIP PORTABLE TO %CD%\bin\7-ZipPortable AND PRESS ENTER TO CONTINUE
+echo go through the install directions as it says then press enter to continue
 pause
 goto FILECHECK
 
