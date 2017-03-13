@@ -15,3 +15,5 @@ Ive made many changes to the project it now has
 Based Off The Portable Minecraft Project
 
 all you need to download is launcher.bat
+
+no more gui 7zip thanks to: https://gbatemp.net/members/scarletdreamz.361561/ :D
