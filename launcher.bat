@@ -5,6 +5,7 @@ set nag=BE SURE TO TURN CAPS LOCK OFF! (never said it was on just make sure)
 set new_version=OFFLINE
 cls
 if exist replacer.bat del replacer.bat
+if exist extract.bat del extract.bat
 del version.txt
 del version.txt.1
 
@@ -17,7 +18,7 @@ if not exist %CD%\extra mkdir %CD%\extra
 if not exist %CD%\data\appdata mkdir %CD%\data\appdata
 
 :VERSION
-echo 5 > %CD%\doc\version.txt
+echo 6 > %CD%\doc\version.txt
 set /p current_version=<%CD%\doc\version.txt
 
 :CREDITS
@@ -45,10 +46,7 @@ goto WGETUPDATE
 :FILECHECK
 if not exist %CD%\extra\SteamSetup.exe goto DOWNLOADSTEAM
 if not exist %CD%\bin\7-ZipPortable\7-ZipPortable.exe goto 7ZIPINSTALLERCHECK
-start %CD%\bin\7-ZipPortable\7-ZipPortable.exe %CD%\extra\SteamSetup.exe
-title READMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADME
-echo EXTRACT "Steam.exe" TO %CD%\bin\Steam\Steam.exe AND PRESS ENTER TO CONTINUE
-pause
+%CD%\bin\7-ZipPortable\App\7-Zip64\7z.exe e %CD%\extra\SteamSetup.exe Steam.exe -o%CD%\bin\Steam
 goto STEAMCHECK
 
 :DOWNLOADSTEAM
@@ -64,6 +62,7 @@ goto FILECHECK
 :7ZIPINSTALLERCHECK
 if not exist %CD%\extra\7-ZipPortable_16.04.paf.exe  goto DOWNLOAD7ZIP
 start %CD%\extra\7-ZipPortable_16.04.paf.exe
+:: maybe a different approach of bringing this to the front
 title READMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADMEREADME
 echo INSTALL 7ZIP PORTABLE TO %CD%\bin\7-ZipPortable AND PRESS ENTER TO CONTINUE
 pause
