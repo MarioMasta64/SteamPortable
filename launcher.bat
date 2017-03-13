@@ -17,7 +17,7 @@ if not exist %CD%\extra mkdir %CD%\extra
 if not exist %CD%\data\appdata mkdir %CD%\data\appdata
 
 :VERSION
-echo 4 > %CD%\doc\version.txt
+echo 5 > %CD%\doc\version.txt
 set /p current_version=<%CD%\doc\version.txt
 
 :CREDITS
@@ -223,6 +223,8 @@ if %choice%==1 title PORTABLE STEAM LAUNCHER - RESETTING STEAM
 if %choice%==0 title PORTABLE STEAM LAUNCHER - UNINSTALLING STEAM
 cls
 echo %NAG%ING
+rmdir /s /q %CD%\extra
+rmdir /s /q %CD%\doc
 rmdir /s /q %CD%\bin\Steam
 cls
 if %choice%==1 title PORTABLE STEAM INSTALLER - RESET
