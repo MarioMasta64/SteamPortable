@@ -19,7 +19,7 @@ if not exist %CD%\extra mkdir %CD%\extra
 if not exist %CD%\data\appdata mkdir %CD%\data\appdata
 
 :VERSION
-echo 7 > %CD%\doc\version.txt
+echo 8 > %CD%\doc\version.txt
 set /p current_version=<%CD%\doc\version.txt
 
 :CREDITS
@@ -37,7 +37,16 @@ echo ================================================== >> %CD%\doc\license.txt
 echo =    You may also modify this script without     = >> %CD%\doc\license.txt
 echo =         consent for PERSONAL USE ONLY          = >> %CD%\doc\license.txt
 echo ================================================== >> %CD%\doc\license.txt
-start notepad.exe %CD%\doc\license.txt
+
+:CREDITSREAD
+cls
+title PORTABLE STEAM LAUNCHER - ABOUT
+setlocal enabledelayedexpansion
+for /f "DELIMS=" %%i in (%CD%\doc\license.txt) do (
+	echo %%i
+)
+endlocal
+pause
 
 :STEAMCHECK
 cls
@@ -166,7 +175,7 @@ if %choice%==4 goto DELETE
 if %choice%==5 goto UPDATECHECK
 if %choice%==6 goto ABOUT
 if %choice%==7 goto EXIT
-set nag="PLEASE SELECT A CHOICE 1-6"
+set nag="PLEASE SELECT A CHOICE 1-7"
 goto MENU
 
 :NULL
@@ -318,3 +327,4 @@ pause
 :EXIT
 xcopy /q %UserProfile%\AppData\LocalLow\* %CD%\data\appdata\locallow /e /i /y
 rmdir /s /q %UserProfile%\AppData\LocalLow
+exit
