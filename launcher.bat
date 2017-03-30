@@ -4,6 +4,7 @@ color 0A
 MODE CON: COLS=32 LINES=8
 cls
 if exist replacer.bat del replacer.bat
+if not exist bin mkdir bin
 
 rmdir /s /q .\doc\
 call :MIGRATEFILES
@@ -12,29 +13,22 @@ exit
 
 :MIGRATEFILES
 cls
-title=Migrating Minecraft Files
-if exist .\data\.minecraft\ xcopy .\data\.minecraft\* .\data\minecraft\.minecraft\ /e /i /y
-if exist .\data\java\ xcopy .\data\java\* .\data\minecraft\java\ /e /i /y
-if exist .\data\profiles\ xcopy .\data\profiles\* .\data\minecraft\profiles\ /e /i /y
-if exist .\data\.minecraft\ rmdir /s /q .\data\.minecraft\
-if exist .\data\java\ rmdir /s /q .\data\java\
-if exist .\data\profiles\ rmdir /s /q .\data\profiles\
+title=Migrating Steam Files
 exit /b
 
 :UPDATE
 cls
 if not exist .\bin\wget.exe call :DOWNLOADWGET
-.\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/EverythingPortable/master/launch_minecraft.bat
-if exist launch_minecraft.bat echo del launcher.bat > replacer.bat
-if exist launch_minecraft.bat echo start launch_minecraft.bat >> replacer.bat
-if exist launch_minecraft.bat echo exit >> replacer.bat
+.\bin\wget.exe https://raw.githubusercontent.com/MarioMasta64/EverythingPortable/master/launch_steam.bat
+if exist launch_steam.bat echo del launcher.bat > replacer.bat
+if exist launch_steam.bat echo start launch_steam.bat >> replacer.bat
+if exist launch_steam.bat echo exit >> replacer.bat
 start replacer.bat
 exit /b
 
 :DOWNLOADWGET
 cls
 title=Downloading WGET
-exit /b
 
 :CHECKWGETDOWNLOADER
 cls
