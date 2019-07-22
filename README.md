@@ -1,19 +1,3 @@
 # SteamPortable
 
-Known Issues: unknown?
-
-Ive made many changes to the project it now has
-
-    Reinstalling Steam [soon(tm)]
-    Launching Steam ( duh xD )
-    Reset Steam (removing everything but steam.exe and relaunching)
-    You Can Copy Your Existing Steam To .\bin\Steam\
-    Uninstalling Steam (removing all files)
-    Updating The Program Easily
-    And A Basic License
-
-Based Off The Portable Minecraft Project
-
-all you need to download is launcher.bat
-
-no more gui 7zip thanks to: https://gbatemp.net/members/scarletdreamz.361561/ :D
+**THE PROJECT HAS BEEN MERGED INTO https://github.com/MarioMasta64/EverythingPortable/releases/latest/ PLEASE USE IT INSTEAD IF YOU ALREADY HAVE THE PROJECT CHOOSE DOWNLOAD IN IT**
