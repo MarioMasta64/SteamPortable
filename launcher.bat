@@ -32,10 +32,5 @@ title=Downloading WGET
 echo "THE PROJECT HAS BEEN MERGED INTO"
 echo "https://github.com/MarioMasta64/EverythingPortable/releases/latest/"
 echo "I DONT KNOW WHY YOU STILL DOWNLOADED THIS FILE."
-exit /b
-
-:EXECUTEWGETDOWNLOADER
-cls
-cscript.exe .\bin\downloadwget.vbs
-move wget.exe .\bin\
-exit /b
+pause
+exit
