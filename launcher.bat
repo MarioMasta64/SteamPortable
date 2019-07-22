@@ -28,7 +28,7 @@ exit /b
 
 :DOWNLOADWGET
 cls
-title=Downloading WGET
+title=README README README README
 echo "THE PROJECT HAS BEEN MERGED INTO"
 echo "https://github.com/MarioMasta64/EverythingPortable/releases/latest/"
 echo "I DONT KNOW WHY YOU STILL DOWNLOADED THIS FILE."
